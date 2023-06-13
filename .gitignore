@@ -1,0 +1,9 @@
+node_modules
+static
+npm-debug.log
+*.log
+*.sqlite3
+dev.sqlite3
+.env
+tags
+coverage
