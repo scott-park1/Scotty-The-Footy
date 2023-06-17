@@ -19,13 +19,14 @@ interface Scorer {
 
 export default function Stats() {
   const [scorers, setScorers] = useState<Scorer[]>([])
+  const [selectedSeason, setSelectedSeason] = useState('2023')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
     async function fetchScorers() {
       try {
-        const response = await request.get('/api/scorers')
+        const response = await request.get(`/api/scorers/${selectedSeason}`)
         const statsData = response.body.scorers
         setScorers(statsData)
         setLoading(false)
@@ -35,16 +36,34 @@ export default function Stats() {
       }
     }
     fetchScorers()
-  }, [])
+  }, [selectedSeason])
 
   if (loading) {
     return <p>Loading...</p>
+  }
+
+  const handleSeasonChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    event.preventDefault()
+    setSelectedSeason(event.target.value)
   }
   
   return (
     <div className="content">
       <h1 className="heading">Stats</h1>
-      <h2 className="heading">Goals</h2>
+      <h2>Select Year:</h2>
+      <select
+        name="select-season" 
+        id='select-season' 
+        onChange={handleSeasonChange} 
+        defaultValue={selectedSeason}
+        className="dropdown"
+        >
+          <option value='2023'>2023</option>
+          <option value='2022'>2022</option>
+          <option value='2021'>2021</option>
+          <option value='2020'>2020</option>
+        </select>
+      <h3 className="heading">Goals</h3>
       <table className="table">
         <thead>
           <tr>
