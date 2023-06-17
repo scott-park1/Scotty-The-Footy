@@ -1,4 +1,30 @@
 body {
-  background-color: #faf8f1;
-  color: #0a1520;
+  background-color: #e3b1fa;
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  margin-top: 100px;
+}
+
+.table {
+  margin: 0 auto;
+}
+
+.teamname {
+  display: flex;
+  margin-left: 15px;
+}
+
+.crest {
+  height: 15px;
+  margin-right: 5px;
+}
+
+.crest-team {
+  height: 30px;
 }
