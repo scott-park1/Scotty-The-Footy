@@ -56,8 +56,8 @@ export default function Teams() {
   }
   
   return (
-    <div>
-      <h1>Teams</h1>
+    <div className="content">
+      <h1 className="heading">Teams</h1>
       <ul>
         {teams.map((team) =>{
           return <div key={team.id}>

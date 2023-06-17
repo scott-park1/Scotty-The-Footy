@@ -2,6 +2,7 @@ import "../main.css"
 import request from "superagent";
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 interface TeamDetails {
   id: number;
@@ -60,13 +61,16 @@ export default function TeamDetails() {
   
   return (
     <div>
-      <h1>Team Details for {teamDetails.name}</h1>
+      <h1 className="content">Team Details for {teamDetails.name}</h1>
       <p><b>Crest:</b> <img className="crest-team" src={teamDetails.crest} alt={teamDetails.name} /></p>
       <p><b>Name:</b> {teamDetails.name}</p>
       <p><b>Founded:</b> {teamDetails.founded}</p>
       <p><b>Venue:</b> {teamDetails.venue}</p>
       <p><b>Website:</b> {teamDetails.website}</p>
       {error && <p style={{color: 'red'}}>{error}</p>}
+      <div>
+      <button className="button"><Link to='/'>Go back</Link></button>
+      </div>
     </div>
   )
 }

@@ -46,8 +46,8 @@ export default function Standings() {
   }
   
   return (
-    <div>
-      <h1>Tables</h1>
+    <div className="content">
+      <h1 className="heading">Tables</h1>
       <table className="table">
         <thead>
           <tr>

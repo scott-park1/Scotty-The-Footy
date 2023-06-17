@@ -42,9 +42,9 @@ export default function Stats() {
   }
   
   return (
-    <div>
-      <h1>Stats</h1>
-      <h2>Goals</h2>
+    <div className="content">
+      <h1 className="heading">Stats</h1>
+      <h2 className="heading">Goals</h2>
       <table className="table">
         <thead>
           <tr>
