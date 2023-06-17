@@ -32,10 +32,10 @@ server.get('/api/teams/:id', async (req, res) => {
   res.json(500)
 }})
 
-
-server.get('/api/standings', async (req, res) => {
+server.get('/api/standings/:id', async (req, res) => {
+  const id = req.params.id
   const response = await request
-  .get('https://api.football-data.org/v4/competitions/PL/standings?season=2022')
+  .get(`https://api.football-data.org/v4/competitions/PL/standings?season=${id}`)
   .set('X-Auth-Token', `${token}`)
   const standings = response.body.standings
   console.log(response.body)

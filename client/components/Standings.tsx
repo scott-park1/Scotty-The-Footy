@@ -1,6 +1,6 @@
 import "../main.css"
 import request from "superagent";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Team {
   position: number;
@@ -22,14 +22,14 @@ interface Team {
 
 export default function Standings() {
   const [standings, setStandings] = useState<Team[]>([])
-  // const [selectedYear, setSelectedYear] = useState('')
+  const [selectedYear, setSelectedYear] = useState('2023')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
     async function fetchStandings() {
       try {
-        const response = await request.get('/api/standings')
+        const response = await request.get(`/api/standings/${selectedYear}`)
         const standingsData = response.body.standings[0].table
         setStandings(standingsData)
         setLoading(false)
@@ -39,15 +39,33 @@ export default function Standings() {
       }
     }
     fetchStandings()
-  }, [])
+  }, [selectedYear])
 
   if (loading) {
     return <p>Loading...</p>
+  }
+
+  const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    event.preventDefault()
+    setSelectedYear(event.target.value)
   }
   
   return (
     <div className="content">
       <h1 className="heading">Tables</h1>
+      <h2>Select Year:</h2>
+      <select
+        name="select-year" 
+        id='select-year' 
+        onChange={handleYearChange} 
+        defaultValue={selectedYear}
+        className="dropdown"
+        >
+          <option value='2023'>2023</option>
+          <option value='2022'>2022</option>
+          <option value='2021'>2021</option>
+          <option value='2020'>2020</option>
+        </select>
       <table className="table">
         <thead>
           <tr>

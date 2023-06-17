@@ -61,16 +61,21 @@ export default function TeamDetails() {
   
   return (
     <div>
+      <div>
       <h1 className="content">Team Details for {teamDetails.name}</h1>
       <p><b>Crest:</b> <img className="crest-team" src={teamDetails.crest} alt={teamDetails.name} /></p>
       <p><b>Name:</b> {teamDetails.name}</p>
       <p><b>Founded:</b> {teamDetails.founded}</p>
       <p><b>Venue:</b> {teamDetails.venue}</p>
       <p><b>Website:</b> {teamDetails.website}</p>
-      {error && <p style={{color: 'red'}}>{error}</p>}
+      </div>
+      <div>
+      <p>Coach: {teamDetails.coach.name}</p>
+      </div>
       <div>
       <button className="button"><Link to='/'>Go back</Link></button>
       </div>
+      {error && <p style={{color: 'red'}}>{error}</p>}
     </div>
   )
 }
