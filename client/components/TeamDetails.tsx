@@ -70,9 +70,6 @@ export default function TeamDetails() {
       <p><b>Website:</b> {teamDetails.website}</p>
       </div>
       <div>
-      <p>Coach: {teamDetails.coach.name}</p>
-      </div>
-      <div>
       <button className="button"><Link to='/'>Go back</Link></button>
       </div>
       {error && <p style={{color: 'red'}}>{error}</p>}
