@@ -5,6 +5,7 @@ import Standings from './Standings'
 import Stats from './Stats'
 import Teams from './Teams'
 import TeamDetails from './TeamDetails'
+import Home from './Home'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div>
         <Navbar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/team" element={<Teams />} />
           <Route path="/team/:id" element={<TeamDetails />} />
           <Route path="/standings" element={<Standings />} />
