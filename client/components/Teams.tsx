@@ -58,17 +58,20 @@ export default function Teams() {
   return (
     <div className="content">
       <h1 className="heading">Teams</h1>
-      <ul>
-        {teams.map((team) => {
-          return (
-            <div key={team.id}>
-              <p>
-                <Link to={`/team/${team.id}`}>{team.name}</Link>
-              </p>
-            </div>
-          )
-        })}
-      </ul>
+      {teams.map((team) => {
+        return (
+          <div key={team.id}>
+            <p>
+              <Link to={`/team/${team.id}`}>{team.name}</Link>
+            </p>
+          </div>
+        )
+      })}
+      <div>
+        <Link to="/" className="button">
+          Home
+        </Link>
+      </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )

@@ -1,6 +1,7 @@
 import '../main.css'
 import request from 'superagent'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 interface Scorer {
   player: {
@@ -93,6 +94,11 @@ export default function Stats() {
           ))}
         </tbody>
       </table>
+      <div>
+        <Link to="/" className="button">
+          Home
+        </Link>
+      </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )

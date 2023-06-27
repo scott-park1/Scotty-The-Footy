@@ -1,6 +1,7 @@
 import '../main.css'
 import request from 'superagent'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 interface Team {
   position: number
@@ -107,6 +108,11 @@ export default function Standings() {
           ))}
         </tbody>
       </table>
+      <div>
+        <Link to="/" className="button">
+          Home
+        </Link>
+      </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )

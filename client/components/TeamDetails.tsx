@@ -122,9 +122,9 @@ export default function TeamDetails() {
         ))}
       </div>
       <div>
-        <button className="button">
-          <Link to="/team">Go back</Link>
-        </button>
+        <Link to="/team" className="button">
+          Back to list of teams
+        </Link>
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
