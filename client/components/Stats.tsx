@@ -1,20 +1,20 @@
-import "../main.css"
-import request from "superagent";
-import { useEffect, useState } from "react";
+import '../main.css'
+import request from 'superagent'
+import { useEffect, useState } from 'react'
 
 interface Scorer {
   player: {
-    id: number;
-    name: string;
-    nationality: string;
+    id: number
+    name: string
+    nationality: string
   }
   team: {
-    id: number;
-    name: string;
-    crest: string;
+    id: number
+    name: string
+    crest: string
   }
-  goals: number;
-  assists: number;
+  goals: number
+  assists: number
 }
 
 export default function Stats() {
@@ -31,8 +31,8 @@ export default function Stats() {
         setScorers(statsData)
         setLoading(false)
       } catch (error) {
-      setError('Something went wrong...')
-      setLoading(false)
+        setError('Something went wrong...')
+        setLoading(false)
       }
     }
     fetchScorers()
@@ -46,23 +46,23 @@ export default function Stats() {
     event.preventDefault()
     setSelectedSeason(event.target.value)
   }
-  
+
   return (
     <div className="content">
       <h1 className="heading">Stats</h1>
       <h2>Select Year:</h2>
       <select
-        name="select-season" 
-        id='select-season' 
-        onChange={handleSeasonChange} 
+        name="select-season"
+        id="select-season"
+        onChange={handleSeasonChange}
         defaultValue={selectedSeason}
         className="dropdown"
-        >
-          <option value='2023'>2023</option>
-          <option value='2022'>2022</option>
-          <option value='2021'>2021</option>
-          <option value='2020'>2020</option>
-        </select>
+      >
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+      </select>
       <h3 className="heading">Goals</h3>
       <table className="table">
         <thead>
@@ -80,7 +80,11 @@ export default function Stats() {
               <td>{index + 1}</td>
               <td>{scorer.player.name}</td>
               <td className="teamname">
-                <img className="crest" src={scorer.team.crest} alt={scorer.team.name} />
+                <img
+                  className="crest"
+                  src={scorer.team.crest}
+                  alt={scorer.team.name}
+                />
                 {scorer.team.name}
               </td>
               <td>{scorer.player.nationality}</td>
@@ -89,7 +93,7 @@ export default function Stats() {
           ))}
         </tbody>
       </table>
-      {error && <p style={{color: 'red'}}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )
 }

@@ -1,23 +1,23 @@
-import "../main.css"
-import request from "superagent";
-import React, { useEffect, useState } from "react";
+import '../main.css'
+import request from 'superagent'
+import React, { useEffect, useState } from 'react'
 
 interface Team {
-  position: number;
+  position: number
   team: {
-    id: number;
-    name: string;
-    crest: string;
+    id: number
+    name: string
+    crest: string
   }
-  playedGames: number;
-  won: number;
-  draw: number;
-  lost: number;
-  goalsFor: number;
-  goalsAgainst: number;
-  goalDifference: number;
-  points: number;
-  form: string;
+  playedGames: number
+  won: number
+  draw: number
+  lost: number
+  goalsFor: number
+  goalsAgainst: number
+  goalDifference: number
+  points: number
+  form: string
 }
 
 export default function Standings() {
@@ -34,8 +34,8 @@ export default function Standings() {
         setStandings(standingsData)
         setLoading(false)
       } catch (error) {
-      setError('Something went wrong...')
-      setLoading(false)
+        setError('Something went wrong...')
+        setLoading(false)
       }
     }
     fetchStandings()
@@ -49,23 +49,23 @@ export default function Standings() {
     event.preventDefault()
     setSelectedYear(event.target.value)
   }
-  
+
   return (
     <div className="content">
       <h1 className="heading">Tables</h1>
       <h2>Select Year:</h2>
       <select
-        name="select-year" 
-        id='select-year' 
-        onChange={handleYearChange} 
+        name="select-year"
+        id="select-year"
+        onChange={handleYearChange}
         defaultValue={selectedYear}
         className="dropdown"
-        >
-          <option value='2023'>2023</option>
-          <option value='2022'>2022</option>
-          <option value='2021'>2021</option>
-          <option value='2020'>2020</option>
-        </select>
+      >
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+      </select>
       <table className="table">
         <thead>
           <tr>
@@ -87,7 +87,11 @@ export default function Standings() {
             <tr key={team.team.id}>
               <td>{team.position}</td>
               <td className="teamname">
-                <img className="crest" src={team.team.crest} alt={team.team.name} />
+                <img
+                  className="crest"
+                  src={team.team.crest}
+                  alt={team.team.name}
+                />
                 {team.team.name}
               </td>
               <td>{team.playedGames}</td>
@@ -103,8 +107,7 @@ export default function Standings() {
           ))}
         </tbody>
       </table>
-      {error && <p style={{color: 'red'}}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )
 }
-
