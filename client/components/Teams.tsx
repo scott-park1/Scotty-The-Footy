@@ -33,13 +33,14 @@ interface Squad {
 
 export default function Teams() {
   const [teams, setTeams] = useState<Squad[]>([])
+  const [selectedYear, setSelectedYear] = useState('2023')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
     async function fetchTeams() {
       try {
-        const response = await request.get('/api/teams')
+        const response = await request.get(`/api/competitions/${selectedYear}`)
         const teamsData = response.body.teams
         setTeams(teamsData)
         setLoading(false)
@@ -49,15 +50,33 @@ export default function Teams() {
       }
     }
     fetchTeams()
-  }, [])
+  }, [selectedYear])
 
   if (loading) {
     return <p>Loading...</p>
   }
 
+  const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    event.preventDefault()
+    setSelectedYear(event.target.value)
+  }
+
   return (
     <div className="content">
       <h1 className="heading">Teams</h1>
+      <h2>Select Year:</h2>
+      <select
+        name="select-year"
+        id="select-year"
+        onChange={handleYearChange}
+        defaultValue={selectedYear}
+        className="dropdown"
+      >
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+      </select>
       {teams.map((team) => {
         return (
           <div key={team.id}>

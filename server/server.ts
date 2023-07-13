@@ -10,13 +10,20 @@ const server = express()
 server.use(express.json())
 server.use(express.static(join(__dirname, './public')))
 
-server.get('/api/teams', async (req, res) => {
-  const response = await request
-    .get('https://api.football-data.org/v4/competitions/PL/teams?season=2022')
-    .set('X-Auth-Token', `${token}`)
-  const teams = response.body.teams
-  console.log(response.body)
-  res.json({ teams })
+server.get('/api/competitions/:id', async (req, res) => {
+  const teamsId = req.params.id
+  try {
+    const response = await request
+      .get(
+        `https://api.football-data.org/v4/competitions/PL/teams?season=${teamsId}`
+      )
+      .set('X-Auth-Token', `${token}`)
+    const teams = response.body.teams
+    console.log(response.body)
+    res.json({ teams })
+  } catch (error) {
+    res.json(500)
+  }
 })
 
 server.get('/api/teams/:id', async (req, res) => {
