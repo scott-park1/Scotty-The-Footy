@@ -40,12 +40,13 @@ server.get('/api/teams/:id', async (req, res) => {
   }
 })
 
-server.get('/api/competitions/matches/:id', async (req, res) => {
+server.get('/api/competitions/matches/:season/:id', async (req, res) => {
   const matchId = req.params.id
+  const season = req.params.season
   try {
     const response = await request
       .get(
-        `https://api.football-data.org/v4/competitions/PL/matches?matchday=${matchId}`
+        `https://api.football-data.org/v4/competitions/PL/matches?season=${season}&matchday=${matchId}`
       )
       .set('X-Auth-Token', `${token}`)
     const matchDetails = response.body

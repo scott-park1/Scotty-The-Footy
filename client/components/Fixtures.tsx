@@ -24,6 +24,7 @@ interface Match {
 
 export default function Matches() {
   const [matches, setMatches] = useState<Match[]>([])
+  const [selectedYear, setSelectedYear] = useState('2023')
   const [matchWeek, setMatchWeek] = useState('1')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -32,7 +33,7 @@ export default function Matches() {
     async function fetchMatches() {
       try {
         const response = await request.get(
-          `api/competitions/matches/${matchWeek}`
+          `api/competitions/matches/${selectedYear}/${matchWeek}`
         )
         const matchesData = response.body.matches
         setMatches(matchesData)
@@ -43,10 +44,15 @@ export default function Matches() {
       }
     }
     fetchMatches()
-  }, [matchWeek])
+  }, [selectedYear, matchWeek])
 
   if (loading) {
     return <p>Loading...</p>
+  }
+
+  const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    event.preventDefault()
+    setSelectedYear(event.target.value)
   }
 
   const handleMatchChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -57,6 +63,19 @@ export default function Matches() {
   return (
     <div className="content">
       <h1 className="heading">Fixtures</h1>
+      <h2>Select Year:</h2>
+      <select
+        name="select-year"
+        id="select-year"
+        onChange={handleYearChange}
+        defaultValue={selectedYear}
+        className="dropdown"
+      >
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+      </select>
       <h2>Select Matchweek:</h2>
       <select
         name="select-matchweek"
