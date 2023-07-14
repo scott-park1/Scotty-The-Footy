@@ -40,7 +40,9 @@ export default function Teams() {
   useEffect(() => {
     async function fetchTeams() {
       try {
-        const response = await request.get(`/api/competitions/${selectedYear}`)
+        const response = await request.get(
+          `/api/competitions/teams/${selectedYear}`
+        )
         const teamsData = response.body.teams
         setTeams(teamsData)
         setLoading(false)

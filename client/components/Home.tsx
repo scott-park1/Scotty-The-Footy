@@ -10,7 +10,11 @@ export default function Home() {
             Teams
           </Link>
         </h3>
-        <h3>Matches</h3>
+        <h3 className="homelist">
+          <Link to="/fixture" className="button">
+            Fixtures
+          </Link>
+        </h3>
         <h3 className="homelist">
           <Link to="/standings" className="button">
             Standings

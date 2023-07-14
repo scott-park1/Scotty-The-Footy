@@ -5,6 +5,7 @@ import Standings from './Standings'
 import Stats from './Stats'
 import Teams from './Teams'
 import TeamDetails from './TeamDetails'
+import Fixtures from './Fixtures'
 import Home from './Home'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/team" element={<Teams />} />
           <Route path="/team/:id" element={<TeamDetails />} />
+          <Route path="/fixture" element={<Fixtures />} />
           <Route path="/standings" element={<Standings />} />
           <Route path="/stats" element={<Stats />} />
         </Routes>
