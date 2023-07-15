@@ -22,7 +22,7 @@ interface Match {
   }
 }
 
-export default function Matches() {
+export default function Fixtures() {
   const [matches, setMatches] = useState<Match[]>([])
   const [selectedYear, setSelectedYear] = useState('2023')
   const [matchWeek, setMatchWeek] = useState('1')
@@ -138,6 +138,9 @@ export default function Matches() {
                 src={match.awayTeam.crest}
                 alt={match.awayTeam.name}
               />
+              <Link to={`/fixtures/${match.id}`} className="arrow-link">
+                →
+              </Link>
             </p>
           </div>
         )
