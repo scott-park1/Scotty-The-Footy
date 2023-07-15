@@ -57,11 +57,13 @@ server.get('/api/competitions/matches/:season/:id', async (req, res) => {
   }
 })
 
-server.get('/api/competitions/matches/:id', async (req, res) => {
+server.get('/api/matches/:id/head2head', async (req, res) => {
   const matchId = req.params.id
   try {
     const response = await request
-      .get(`https://api.football-data.org/v4/matches/${matchId}`)
+      .get(
+        `https://api.football-data.org/v4/matches/${matchId}/head2head?limit=50`
+      )
       .set('X-Auth-Token', `${token}`)
     const matchDetails = response.body
     console.log(response.body)
