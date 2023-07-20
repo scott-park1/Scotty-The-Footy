@@ -6,20 +6,45 @@
 
 .navbar {
   top: 0;
-  position: fixed;
+  position: relative;
   width: 100%;
   height: 10vh;
   background-color: #001DC4;
   color: #f49d37;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   font-size: 40px;
 }
 
+.h1-header {
+  margin-top: 10px;
+  margin-left: 25px;
+  text-shadow: 3px 3px black;
+}
+
+.routes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.routes h3 {
+  margin-right: 30px;
+}
+
+.routes a {
+  color: #f49d37;
+  text-decoration: none;
+}
+
+.routes a:hover {
+  color: white;
+  transition: 500ms ease;
+}
+
 body {
-  background: #FAFFF8;
+  background: #fffdf8;
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
 }
@@ -28,7 +53,7 @@ body {
   width: 100%;
   height: 10vh;
   bottom: 0;
-  position: fixed;
+  position: relative;
   background-color: #001DC4;
   color: #f49d37;
   display: flex;
@@ -38,41 +63,59 @@ body {
   font-size: 20px;
 }
 
-.home {
-  margin-top: 80px;
+.footer-text {
+  margin-top: 5px;
 }
 
-.homeheading {
-  margin: 50px auto 50px auto;
-  font-size: 20px;
+.introduction {
+  font-size: 30px;
+  margin: 40px 1px 40px 1px;
+}
+
+.container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  max-width: 50%;
-}
-
-.homelist {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .content {
-  margin-top: 150px;
-  margin-bottom: 100px;
+  flex: 1;
+  max-width: 100%;
+  margin: 50px;
 }
 
 .heading {
-  margin-bottom: 20px;
+  margin: 40px 0px 20px 0px;
+  font-size: 40px;
+}
+
+.heading-goals {
+  margin: 40px 0px 20px 0px;
+  font-size: 30px;
+}
+
+.table-standings {
+  margin: 0 auto;
+  font-size: 18px;
 }
 
 .table {
   margin: 0 auto;
+  font-size: 18px;
+}
+
+.table-no-details {
+  margin-bottom: 50px;
+  font-size: 18px;
 }
 
 .teamname {
   display: flex;
   margin-left: 15px;
+}
+
+.team-link {
+  color: black;
 }
 
 .crest {
@@ -86,17 +129,18 @@ body {
 }
 
 .button {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 10px;
   background-color: #f49d37;
   border: 2px solid black;
   border-radius: 12px;
   color: black;
-  padding: 10px 10px;
+  padding: 5px 17px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   box-shadow: 2px 4px;
+  font-size: 25px;
 }
 
 .dropdown {
@@ -106,10 +150,27 @@ body {
   border: none;
   border-radius: 12px;
   color: black;
-  padding: 10px 10px;
+  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 25px;
+}
+
+.dropdown-match {
+  margin: 20px 0 20px 0;
+  background-color: #f49d37;
+  box-shadow: 2px 4px;
+  border: none;
+  border-radius: 12px;
+  color: black;
+  padding: 3px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 25px;
 }
 
 .arrow-link {
@@ -117,4 +178,408 @@ body {
   text-decoration: none;
   color: black;
   margin-left: 5px;
+}
+
+.loading {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.football {
+  height: 30px;
+  animation: roll .7s linear infinite;
+}
+
+.box {
+  margin: 0 auto;
+  width: 40px;
+  height: 140px;
+  position: relative;
+  
+  .shadow {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: grey;
+    bottom: 0;
+    border-radius: 100%;
+    transform: scaleX(.8);
+    opacity: .6;
+    animation: shadowScale 1s linear infinite;
+  }
+}
+.gravity {
+  width: 40px;
+  height: 40px;
+  animation: bounce 1s cubic-bezier(0.68, 0.35, 0.29, 0.54) infinite;
+}
+.ball {
+  width: 40px;
+  height: 40px;
+  background-image: url('https://cdn2.iconfinder.com/data/icons/activity-5/50/26BD-soccer-ball-128.png');
+  background-size: cover;
+  animation: roll .7s linear infinite;
+}
+
+@keyframes roll {
+  0% {}
+  100% { transform: rotate(360deg) }
+}
+@keyframes bounce {
+  0% {}
+  50% { transform: translateY(100px) }
+  100% {}
+}
+@keyframes shadowScale {
+  0% {}
+  50% { transform: scaleX(1); opacity: .8;}
+  100% {}
+}
+
+@media (min-width: 0px) and (max-width: 480px) {
+  .navbar {
+    height: 10vh;
+    padding: 0 20px;
+    transition: transform 0.3s ease-out;
+  }
+
+  .menu-icon {
+    margin-top: 7px;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .h1-header {
+    margin-top: 5px;
+    margin-right: 60px;
+    font-size: 25px;
+    text-align: center;
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+  
+  .routes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 10vh;
+    width: 100%;
+    background-color: #001DC4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    font-size: 18px;
+  }
+
+  .show-menu {
+    transform: translateY(calc(-100% - 10px));
+  }
+
+  .slide-in {
+    transform: translateY(0);
+  }
+
+  .close-menu {
+    margin-top: 2px;
+    color: white;
+  }
+  
+  .footer {
+    font-size: 20px;
+  }
+  
+  .introduction {
+    font-size: 20px;
+    margin: 40px 1px 40px 1px;
+  }
+  
+  .heading {
+    font-size: 25px;
+  }
+  
+  .heading-goals {
+    font-size: 25px;
+  }
+
+  td {
+    margin: 5px 20px;
+  }
+
+  .table-standings {
+    margin-left: -55px;
+    font-size: 14px;
+  }
+  
+  .table {
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  
+  .table-no-details {
+    font-size: 14px;
+  }
+  
+  .button {
+    font-size: 15px;
+  }
+  
+  .dropdown {
+    font-size: 15px;
+  }
+  
+  .dropdown-match {
+    padding: 5px 17px;
+    font-size: 15px;
+  }
+  
+  .loading {
+    font-size: 20px;
+  }
+  
+  .football {
+    height: 20px;
+  }
+  
+  .box {
+    width: 30px;
+  }
+
+  .gravity {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ball {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 720px) {
+  .navbar {
+    height: 10vh;
+    font-size: 40px;
+    padding: 0 20px;
+    transition: transform 0.3s ease-out;
+  }
+
+  .menu-icon {
+    margin-top: 7px;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .h1-header {
+    margin-top: 7px;
+    margin-right: 60px;
+    font-size: 30px;
+    text-align: center;
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+  
+  .routes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 10vh;
+    width: 100%;
+    background-color: #001DC4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    font-size: 20px;
+  }
+
+  .show-menu {
+    transform: translateY(calc(-100% - 10px));
+  }
+
+  .slide-in {
+    transform: translateY(0);
+  }
+
+  .close-menu {
+    margin-top: 2px;
+    color: white;
+  }
+  
+  .footer {
+    font-size: 20px;
+  }
+  
+  .introduction {
+    font-size: 20px;
+    margin: 40px 1px 40px 1px;
+  }
+  
+  .heading {
+    font-size: 25px;
+  }
+  
+  .heading-goals {
+    font-size: 25px;
+  }
+
+  .table-standings {
+    margin-left: 40px;
+    font-size: 14px;
+  }
+  
+  .table {
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  
+  .table-no-details {
+    font-size: 14px;
+  }
+  
+  .button {
+    font-size: 15px;
+  }
+  
+  .dropdown {
+    font-size: 15px;
+  }
+  
+  .dropdown-match {
+    padding: 5px 17px;
+    font-size: 15px;
+  }
+  
+  .loading {
+    font-size: 20px;
+  }
+  
+  .football {
+    height: 20px;
+  }
+  
+  .box {
+    width: 30px;
+  }
+
+  .gravity {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ball {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .navbar {
+    top: 0;
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    background-color: #001DC4;
+    color: #f49d37;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+  }
+
+  .h1-header {
+    margin-top: 7px;
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+  
+  .routes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 20px;
+  }
+  
+  .footer {
+    font-size: 20px;
+  }
+  
+  .introduction {
+    font-size: 20px;
+    margin: 40px 1px 40px 1px;
+  }
+  
+  .heading {
+    font-size: 25px;
+  }
+  
+  .heading-goals {
+    font-size: 25px;
+  }
+
+  .table-standings {
+    margin-left: 200px;
+    font-size: 14px;
+  }
+  
+  .table {
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  
+  .table-no-details {
+    font-size: 14px;
+  }
+  
+  .button {
+    font-size: 15px;
+  }
+  
+  .dropdown {
+    font-size: 15px;
+  }
+  
+  .dropdown-match {
+    padding: 5px 17px;
+    font-size: 15px;
+  }
+  
+  .loading {
+    font-size: 20px;
+  }
+  
+  .football {
+    height: 20px;
+  }
+  
+  .box {
+    width: 30px;
+  }
+
+  .gravity {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ball {
+    width: 30px;
+    height: 30px;
+  }
 }

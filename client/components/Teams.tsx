@@ -55,7 +55,16 @@ export default function Teams() {
   }, [selectedYear])
 
   if (loading) {
-    return <p>Loading...</p>
+    return (
+      <p className="loading">
+        Loading...
+        <img
+          src="https://cdn2.iconfinder.com/data/icons/activity-5/50/26BD-soccer-ball-128.png"
+          alt="footbll"
+          className="football"
+        />
+      </p>
+    )
   }
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -66,7 +75,7 @@ export default function Teams() {
   return (
     <div className="content">
       <h1 className="heading">Teams</h1>
-      <h2>Select Year:</h2>
+      <h2>Select Year</h2>
       <select
         name="select-year"
         id="select-year"
@@ -82,8 +91,10 @@ export default function Teams() {
       {teams.map((team) => {
         return (
           <div key={team.id}>
-            <p>
-              <Link to={`/team/${team.id}`}>{team.name}</Link>
+            <p className="table">
+              <Link to={`/team/${team.id}`} className="team-link">
+                {team.name}
+              </Link>
             </p>
           </div>
         )

@@ -40,7 +40,16 @@ export default function Stats() {
   }, [selectedSeason])
 
   if (loading) {
-    return <p>Loading...</p>
+    return (
+      <p className="loading">
+        Loading...
+        <img
+          src="https://cdn2.iconfinder.com/data/icons/activity-5/50/26BD-soccer-ball-128.png"
+          alt="footbll"
+          className="football"
+        />
+      </p>
+    )
   }
 
   const handleSeasonChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -51,7 +60,7 @@ export default function Stats() {
   return (
     <div className="content">
       <h1 className="heading">Stats</h1>
-      <h2>Select Year:</h2>
+      <h2>Select Year</h2>
       <select
         name="select-season"
         id="select-season"
@@ -64,7 +73,7 @@ export default function Stats() {
         <option value="2021">2021</option>
         <option value="2020">2020</option>
       </select>
-      <h3 className="heading">Goals</h3>
+      <h3 className="heading-goals">Goals</h3>
       <table className="table">
         <thead>
           <tr>

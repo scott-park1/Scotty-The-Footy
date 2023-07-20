@@ -43,7 +43,16 @@ export default function Standings() {
   }, [selectedYear])
 
   if (loading) {
-    return <p>Loading...</p>
+    return (
+      <p className="loading">
+        Loading...
+        <img
+          src="https://cdn2.iconfinder.com/data/icons/activity-5/50/26BD-soccer-ball-128.png"
+          alt="footbll"
+          className="football"
+        />
+      </p>
+    )
   }
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -54,7 +63,7 @@ export default function Standings() {
   return (
     <div className="content">
       <h1 className="heading">Tables</h1>
-      <h2>Select Year:</h2>
+      <h2>Select Year</h2>
       <select
         name="select-year"
         id="select-year"
@@ -67,7 +76,7 @@ export default function Standings() {
         <option value="2021">2021</option>
         <option value="2020">2020</option>
       </select>
-      <table className="table">
+      <table className="table-standings">
         <thead>
           <tr>
             <th>Position</th>

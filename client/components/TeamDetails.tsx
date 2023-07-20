@@ -52,7 +52,16 @@ export default function TeamDetails() {
   }, [id])
 
   if (loading) {
-    return <p>Loading...</p>
+    return (
+      <p className="loading">
+        Loading...
+        <img
+          src="https://cdn2.iconfinder.com/data/icons/activity-5/50/26BD-soccer-ball-128.png"
+          alt="footbll"
+          className="football"
+        />
+      </p>
+    )
   }
 
   if (!teamDetails) {
@@ -62,9 +71,9 @@ export default function TeamDetails() {
   return (
     <div className="content">
       <div>
-        <h1>Team Details for {teamDetails.name}</h1>
+        <h1 className="heading">Team Details for {teamDetails.name}</h1>
         <br />
-        <p>
+        <p className="table">
           <b>Crest:</b>
           <img
             className="crest-team"
@@ -72,49 +81,49 @@ export default function TeamDetails() {
             alt={teamDetails.name}
           />
         </p>
-        <p>
+        <p className="table">
           <b>Name:</b> {teamDetails.name}
         </p>
-        <p>
+        <p className="table">
           <b>Founded:</b> {teamDetails.founded}
         </p>
-        <p>
+        <p className="table">
           <b>Venue:</b> {teamDetails.venue}
         </p>
-        <p>
+        <p className="table">
           <b>Website:</b> {teamDetails.website}
         </p>
       </div>
       <br />
       <div>
-        <h2>Manager:</h2>
+        <h2>Manager</h2>
         <br />
-        <p>
+        <p className="table">
           <b>Name:</b> {teamDetails.coach.name}
         </p>
-        <p>
+        <p className="table">
           <b>Date of Birth:</b> {teamDetails.coach.dateOfBirth}
         </p>
-        <p>
+        <p className="table">
           <b>Nationality:</b> {teamDetails.coach.nationality}
         </p>
       </div>
       <br />
       <div>
-        <h2>Squad:</h2>
+        <h2>Squad</h2>
         <br />
         {teamDetails.squad.map((squadMember) => (
           <div key={squadMember.id}>
-            <p>
+            <p className="table">
               <b>Name:</b> {squadMember.name}
             </p>
-            <p>
+            <p className="table">
               <b>Position:</b> {squadMember.position}
             </p>
-            <p>
+            <p className="table">
               <b>Date of Birth:</b> {squadMember.dateOfBirth}
             </p>
-            <p>
+            <p className="table">
               <b>Nationality:</b> {squadMember.nationality}
             </p>
             <br />
@@ -123,7 +132,7 @@ export default function TeamDetails() {
       </div>
       <div>
         <Link to="/team" className="button">
-          Back to list of teams
+          Back to the list of teams
         </Link>
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}

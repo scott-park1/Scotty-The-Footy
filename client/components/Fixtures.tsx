@@ -47,7 +47,16 @@ export default function Fixtures() {
   }, [selectedYear, matchWeek])
 
   if (loading) {
-    return <p>Loading...</p>
+    return (
+      <p className="loading">
+        Loading...
+        <img
+          src="https://cdn2.iconfinder.com/data/icons/activity-5/50/26BD-soccer-ball-128.png"
+          alt="footbll"
+          className="football"
+        />
+      </p>
+    )
   }
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -63,7 +72,7 @@ export default function Fixtures() {
   return (
     <div className="content">
       <h1 className="heading">Fixtures</h1>
-      <h2>Select Year:</h2>
+      <h2>Select Year</h2>
       <select
         name="select-year"
         id="select-year"
@@ -76,13 +85,13 @@ export default function Fixtures() {
         <option value="2021">2021</option>
         <option value="2020">2020</option>
       </select>
-      <h2>Select Matchweek:</h2>
+      <h2>Select Matchweek</h2>
       <select
         name="select-matchweek"
         id="select-matchweek"
         onChange={handleMatchChange}
         defaultValue={matchWeek}
-        className="dropdown"
+        className="dropdown-match"
       >
         <option value="1">1</option>
         <option value="2">2</option>
@@ -126,7 +135,7 @@ export default function Fixtures() {
       {matches.map((match) => {
         return (
           <div key={match.id}>
-            <p>
+            <p className="table">
               <img
                 className="crest"
                 src={match.homeTeam.crest}
