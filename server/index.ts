@@ -1,7 +1,7 @@
 import server from './server'
+import dotenv from 'dotenv'
 
 const PORT = process.env.PORT || 3000
-process.env.NODE_ENV
 
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console
@@ -9,6 +9,6 @@ server.listen(PORT, () => {
 })
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  const envConfig = require('dotenv').config()
+  const envConfig = dotenv.config()
   if (envConfig.error) throw envConfig.error
 }
