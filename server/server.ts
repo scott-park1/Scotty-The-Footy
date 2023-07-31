@@ -1,4 +1,4 @@
-import { join } from 'node:path'
+import path, { join } from 'node:path'
 import express from 'express'
 import request from 'superagent'
 import 'dotenv/config'
@@ -96,5 +96,12 @@ server.get('/api/scorers/:id', async (req, res) => {
   console.log(response.body)
   res.json({ scorers })
 })
+
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(path.resolve(__dirname, '../assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../index.html'))
+  })
+}
 
 export default server
