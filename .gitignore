@@ -7,3 +7,6 @@ dev.sqlite3
 .env
 tags
 coverage
+
+# Local Netlify folder
+.netlify
